@@ -24,7 +24,8 @@
         },
 
         plus: function () {
-          return parseInt(this.state.a) + parseInt(this.state.b);
+          alert(parseInt(this.state.a) + parseInt(this.state.b));
+            event.preventDefault();
         },
         minus: function () {
             return parseInt(this.state.a) - parseInt(this.state.b);
@@ -47,15 +48,11 @@
 
         render: function () {
             return (
-                    <div>
-                        <input className="number-a" onChange={this.hundleChangeA}></input>
-                        <input className="number-b" onChange={this.hundleChangeB}></input>
-
-                        <text>сложение {this.plus()}</text>
-                        <text>вычитание {this.minus()}</text>
-                        <text>умножение {this.multi()}</text>
-                    </div>
-
+                    <form onSubmit={this.plus()}>
+                        <input className="number-a" value={this.state.a} onChange={this.hundleChangeA}></input>
+                        <input className="number-b" value={this.state.b} onChange={this.hundleChangeB}></input>
+                        <input type="submit" name="Plus"></input>
+                    </form>
             );
         }
     });
@@ -67,6 +64,7 @@
 
 </script>
 
+<!--
 <script type="text/babel">
     class NameForm extends React.Component {
         constructor(props) {
@@ -108,6 +106,7 @@
             document.getElementById('root')
     );
 </script>
+-->
 
 
 </body>
