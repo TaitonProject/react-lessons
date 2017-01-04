@@ -19,19 +19,27 @@
         getInitialState: function () {
             return {
                 a: 0,
-                b: 0
+                b: 0,
+                c: 0
             }
         },
 
         plus: function () {
-          alert(parseInt(this.state.a) + parseInt(this.state.b));
-            event.preventDefault();
+            this.setState({
+                c: parseInt(this.state.a) + parseInt(this.state.b)
+            })
         },
+
         minus: function () {
-            return parseInt(this.state.a) - parseInt(this.state.b);
+            this.setState({
+                c: parseInt(this.state.a) - parseInt(this.state.b)
+            })
         },
+
         multi: function () {
-            return parseInt(this.state.a) * parseInt(this.state.b);
+            this.setState({
+                c: parseInt(this.state.a) * parseInt(this.state.b)
+            })
         },
 
         hundleChangeB: function (event) {
@@ -48,11 +56,14 @@
 
         render: function () {
             return (
-                    <form onSubmit={this.plus()}>
+                    <div>
                         <input className="number-a" value={this.state.a} onChange={this.hundleChangeA}></input>
                         <input className="number-b" value={this.state.b} onChange={this.hundleChangeB}></input>
-                        <input type="submit" name="Plus"></input>
-                    </form>
+                        <button name="Plus" onClick={this.plus}>Plus</button>
+                        <button name="Minus" onClick={this.minus}>Minus</button>
+                        <button name="Multi" onClick={this.multi}>Multi</button>
+                        <text>{this.state.c}</text>
+                    </div>
             );
         }
     });
